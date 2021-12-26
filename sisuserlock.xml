@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="system" method="upgrade">
+  <name>plg_system_sisuserlock</name>
+  <creationDate>December 2021</creationDate>
+	<copyright>(C) 2021 Sergio Iglesias. All rights reserved.</copyright>
+	<author>Sergio Iglesias</author>
+	<authorEmail>info@sergioiglesias.net</authorEmail>
+	<authorUrl>https://sergioiglesias.net</authorUrl>
+	<license>GNU General Public License v2.0</license>
+	<version>1.0.0</version>
+	<description>PLG_SYSTEM_SISUSERLOCK_XML_DESCRIPTION</description>
+  
+  <files>
+		<filename plugin="sisuserlock">sisuserlock.php</filename>
+		<filename>index.html</filename>
+	</files>
+
+  <languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_sisuserlock.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_sisuserlock.sys.ini</language>
+		<language tag="es-ES">es-ES/es-ES.plg_system_sisuserlock.ini</language>
+		<language tag="es-ES">es-ES/es-ES.plg_system_sisuserlock.sys.ini</language>
+	</languages>
+
+  <config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+          name="lockedfields"
+          type="sql"
+          default=""
+          label="PLG_SYSTEM_SISUSERLOCK_SELECT_FIELDS_LABEL"
+          query="SELECT id, label as title FROM #__fields WHERE state = 1 AND context = 'com_users.user'"
+          key_field="id"
+          value_field="title"
+          multiple="multiple"
+          description="PLG_SYSTEM_SISUSERLOCK_SELECT_FIELDS_DESC"
+        />
+        <field name="menuredirect" type="menuitem" label="PLG_SYSTEM_SISUSERLOCK_REDIRECT_LABEL" description="PLG_SYSTEM_SISUSERLOCK_REDIRECT_DESC" />
+        <field name="errormessage" type="text" label="PLG_SYSTEM_SISUSERLOCK_ERROR_LABEL" description="PLG_SYSTEM_SISUSERLOCK_ERROR_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+
+  <updateservers>
+		<server type="extension" name="SIS UserLock">https://sergiois.github.io/sis-userlock.xml</server>
+	</updateservers>
+</extension>
